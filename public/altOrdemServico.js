@@ -785,6 +785,8 @@ function calcularOperacaoOsOs() {
   const credito = arredondar(creditoInput);
   montocred = creditoInput
   montodeb = debitoInput 
+  cartados = montodeb
+  cartacos = montocred
 
   if(adiantamentooso>0 && dinheiro<adiantamentooso){
     showToast(`O monto do dinhiero não pode ser menor que o adiantamento. Adiantamento: R$ ${adiantamentoos.toFixed(2)}`,
