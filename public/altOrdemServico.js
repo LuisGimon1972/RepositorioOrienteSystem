@@ -92,13 +92,13 @@ if (selecth && selecth.options.length > 0 && selecth.selectedIndex >= 0) {
     if (existe) {      
       selectObjetos.value = objetoId;
     } else {      
-      const optionTemp = document.createElement('option');
-      optionTemp.text = os.objetoNome || `Objeto ${objetoId}`; 
-      optionTemp.value = objetoId;
-      optionTemp.dataset.temp = "true";
-      selectObjetos.appendChild(optionTemp);
-      selectObjetos.value = objetoId;
-    }    
+        const optionTemp = document.createElement('option');
+        optionTemp.text = os.objetoNome || `Objeto ${objetoId}`; 
+        optionTemp.value = objetoId;
+        optionTemp.dataset.temp = "true";
+        selectObjetos.appendChild(optionTemp);
+        selectObjetos.value = objetoId;
+      }    
     objetoSelecionado = objetoId;    
   }
 } 
@@ -199,11 +199,11 @@ async function handleFormSubmitOs(e) {
     controle = parseInt(cStr.trim(), 10);
   } else {
     if (!/^\d+$/.test(entrada)) return erroEntrada();
-    controle = parseInt(entrada, 10);
+      controle = parseInt(entrada, 10);
   }
 
   if (isNaN(quantidade) || isNaN(controle) || quantidade <= 0) return erroEntrada();
-  await handleEntradaOsOs(controle, quantidade);
+     await handleEntradaOsOs(controle, quantidade);
 
   function erroEntrada() {
     showToast("⚠️ Entrada inválida. Ex: 1234 ou 2*1234", 2500);
@@ -275,7 +275,6 @@ function adicionarItemVendaOsOs(produto, quantidade) {
     showToastl("⚠️ Quantidade inválida", 2000);
     return;
   }
-
   const precoVenda = parseFloat(produto.precovenda) || 0;
   const total = precoVenda * quantidade;
   const aplica = produto.aplicacao
@@ -599,8 +598,7 @@ function recalcularTotalOsOs() {
   const descontoInput = document.getElementById('descoso');
   const acrescimoInput = document.getElementById('ascoso');
   const adiantamentoInput = document.getElementById('adiantamentox');
-  const totalGeralInput = document.getElementById('totalgeralos');
-  
+  const totalGeralInput = document.getElementById('totalgeralos');  
   let desconto = parseFloat(descontoInput.value) || 0;
   let acrescimo = parseFloat(acrescimoInput.value) || 0;
   let adiantamentos = parseFloat(adiantamentoInput.value) || 0;
@@ -637,7 +635,6 @@ function recalcularTotalOsOs() {
   document.getElementById('desconto').value = desconto.toFixed(2);
   document.getElementById('acrescimo').value = acrescimo.toFixed(2);       
   document.getElementById('total-geral').value = Number(totalGeralInput).toFixed(2);
-
 }
 
 document.addEventListener('DOMContentLoaded', () => {
