@@ -74,7 +74,7 @@ function compra()
     if (entrada.includes('*')) {    
     const [quantidadeStr, controleStr] = entrada.split('*');       
     quantidade = parseFloat(quantidadeStr.trim().replace(',', '.'));         
-    // Controle só inteiro
+    
     if (!/^\d+$/.test(controleStr.trim())) {     
         if (tipoBusca === 'controle') 
         {
@@ -129,23 +129,19 @@ function compra()
 
 async function handleEntradac(valor, tipoBusca, quantidade = 1) {  
   try {
-    // busca o produto
     const produto = await buscarProdutoc(tipoBusca, valor);
     if (!produto) {
       showToast("⚠️Produto inexistente ou desativado!", 2500);
       limparEntrada();
       return;
     }
-
-    // verifica quantidade fracionada
+    
     if (!Number.isInteger(quantidade) && produto.fracionado !== 'SIM') {
       showToast(`🚫 Produto "${produto.produto}" não permite quantidade fracionada!`, 2500);
       limparEntrada();
       return;
-    }
-    
+    }   
 
-    // tenta atualizar o estoque
     const estoqueAtualizado = await aumentarEstoque(produto.controle, quantidade);
     if (!estoqueAtualizado) {
       showToast("❌ Erro ao atualizar estoque!", 2500);
@@ -164,7 +160,6 @@ async function handleEntradac(valor, tipoBusca, quantidade = 1) {
   }
 }
 
-// função utilitária para limpar o campo de entrada
 function limparEntrada() {
   const entradaEl = document.getElementById("entra");
   if (entradaEl) {
@@ -366,9 +361,6 @@ function finalizarCompra() {
   const fornecedor_id = controleFornecedorSel;
   if (!fornecedor_id) {
     controleFornecedorSel = 1
-    //showToast('Deve selecionar um Fornecedor!', 2500);
-    //document.getElementById("selectFornece").focus();
-    //return;
   }
 
   const ehParcelado = document.getElementById('parceladoCredito').checked;
@@ -416,8 +408,7 @@ function finalizarCompra() {
       listaParcelas.push(`${i}ª parcela - ${vencStr}`);
     }
   }
-
-  // Validação de pagamento insuficiente
+  
   if (totalPago < total) {
     const falta = total - totalPago;
     document.getElementById('falta').value = falta.toFixed(2);
@@ -425,14 +416,12 @@ function finalizarCompra() {
     showToast("O valor total não é suficiente. Verifique os pagamentos.", 2500);
     return;
   }
-
-  // Validação de troco quando não há dinheiro
+  
   if (totalPago > total && dinheiro === 0) {
     showToast("O valor total dos cartões excede o valor da compra. Verifique os pagamentos.", 2500);
     return;
   }
-
-  // Troco ou valores exatos
+  
   let troco = 0.00;
   if (totalPago > total) {
     troco = totalPago - total;
@@ -441,9 +430,7 @@ function finalizarCompra() {
   } else {
     document.getElementById('troco').value = "0.00";
     document.getElementById('falta').value = "0.00";
-  }
-
-  // Finalizar compra
+  }  
   showToast("Nota de compra finalizada com sucesso", 5000);
 
   if (dinheiro > 0 || cartaoDebito > 0 || cartaoCredito > 0) {
@@ -465,7 +452,6 @@ function finalizarCompra() {
   limparCompra();
   setTimeout(() => location.reload(), 2000);
 }
-
 
   const btnCancelac = document.getElementById('btnCancelarv');
   btnCancelac.addEventListener('click', () => {
