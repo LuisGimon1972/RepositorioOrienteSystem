@@ -27,23 +27,7 @@ function resetOsStatev() {
   carregarFuncionariosTecMec();
   carregarStatus();
   tornarDescontoEAcrescimoSomenteLeitura(false);   
-  ['formPresenta', 'formCalculos','ladiantamento','adiantamento'].forEach(id => document.getElementById(id).style.display = 'none');
-  ['formPainel', 'formOs'].forEach(id => document.getElementById(id).style.display = 'block');
-  document.getElementById('btnFinalizarOs').style.display = 'none';
-  document.getElementById('btnFinalizarOsOs').style.display = 'none';
-  document.getElementById('btnFinalizarFi').style.display = 'none';
-  document.getElementById('btnFinalizarFc').style.display = 'none';
-  document.getElementById('btnFinalizar').style.display = 'none';
-  document.getElementById('btnFinalizarOs').style.display = 'none';  
-  document.getElementById('btnSalvarOrdem').style.display = 'none';
-  document.getElementById('btnCancelarOrdem').style.display = 'none';
-  document.getElementById('btnCancelarOrdemAlt').style.display = 'none';
-  document.getElementById('btnCancelarVer').style.display = 'inline-block';  
-  document.getElementById('btnAltOrdem').style.display = 'none';
-  document.getElementById("controleod").readOnly = true;
-  
-  ['ladescos','descos','laascos','ascos'].forEach(id => document.getElementById(id).style.display = 'none');
-  ['ladescoso','descoso','laascoso','ascoso'].forEach(id => document.getElementById(id).style.display = 'inline-block');
+  habilitarcontroleveros()  
 }
 
 async function fetchJsonv(url) {
@@ -221,8 +205,7 @@ function coletarDadosOrdemv() {
   const descricao = document.getElementById("descricaoos").value.trim();
   const observacoes = document.getElementById("observa").value.trim();
   const desconto = parseFloat(document.getElementById('descoso').value)||0;
-  const acrescimo = parseFloat(document.getElementById('ascoso').value)||0; 
-  
+  const acrescimo = parseFloat(document.getElementById('ascoso').value)||0;   
 
   return {
     numeroOS: idOS,
@@ -280,7 +263,6 @@ function recalcularTotalOsOsv() {
   const descontoInput = document.getElementById('descoso');
   const acrescimoInput = document.getElementById('ascoso');
   const totalGeralInput = document.getElementById('totalgeralos');
-
   let desconto = parseFloat(descontoInput.value) || 0;
   let acrescimo = parseFloat(acrescimoInput.value) || 0;
   descontoos = desconto;
@@ -297,12 +279,10 @@ function recalcularTotalOsOsv() {
     }, 2500);    
     return;
   }
-
   totalGeralInput.value = (totalGeralOsx - desconto + acrescimo).toFixed(2);
   document.getElementById('desconto').value = desconto.toFixed(2);
   document.getElementById('acrescimo').value = acrescimo.toFixed(2);       
   document.getElementById('total-geral').value = Number(totalGeralInput).toFixed(2);  
-
 }
 
 
@@ -310,19 +290,15 @@ function bloquearCamposOS(bloquear) {
   const form = document.getElementById("formOs");
   if (!form) return;
 
-  // Seleciona todos os elementos interativos dentro do formulário
   const campos = form.querySelectorAll("input, select, textarea, button");
-
-  // Aplica bloqueio ou desbloqueio a todos
+  
   campos.forEach(el => {
     el.disabled = bloquear;
   });
 
-  // Reabilita o botão cancelar mesmo quando tudo está bloqueado
   const btnCancelar = document.getElementById("btnCancelarVer");
   if (btnCancelar) btnCancelar.disabled = false;
 }
-
 
 function cancelarVer(){   
    limparCamposOs()
@@ -330,3 +306,21 @@ function cancelarVer(){
    document.getElementById('btnLisos').click();
    }
 
+  function habilitarcontroleveros(){
+    ['formPresenta', 'formCalculos'].forEach(id => document.getElementById(id).style.display = 'none');
+    ['formPainel', 'formOs'].forEach(id => document.getElementById(id).style.display = 'block');
+    document.getElementById('btnFinalizarOs').style.display = 'none';
+    document.getElementById('btnFinalizarOsOs').style.display = 'none';
+    document.getElementById('btnFinalizarFi').style.display = 'none';
+    document.getElementById('btnFinalizarFc').style.display = 'none';
+    document.getElementById('btnFinalizar').style.display = 'none';
+    document.getElementById('btnFinalizarOs').style.display = 'none';  
+    document.getElementById('btnSalvarOrdem').style.display = 'none';
+    document.getElementById('btnCancelarOrdem').style.display = 'none';
+    document.getElementById('btnCancelarOrdemAlt').style.display = 'none';
+    document.getElementById('btnCancelarVer').style.display = 'inline-block';  
+    document.getElementById('btnAltOrdem').style.display = 'none';
+    document.getElementById("controleod").readOnly = true;  
+    ['ladescos','descos','laascos','ascos','ladiantamento','adiantamento'].forEach(id => document.getElementById(id).style.display = 'none');
+    ['ladescoso','descoso','laascoso','ascoso'].forEach(id => document.getElementById(id).style.display = 'inline-block');
+  } 
