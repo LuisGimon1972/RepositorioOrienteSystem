@@ -1,8 +1,6 @@
 let vendasos = [];    
-let totalGeralOs = 0, totalGeralItensOs = 0, totalGeralServOs = 0, descontoos = 0, acrescimoos = 0, adiantamentoos =0, montodeb = 0, montocred = 0, subTotalOs=0, trocoos = 0, totalx = 0;   
-let nos     
-let tiposer = ''
-let contserv = 0
+let totalGeralOs = 0, totalGeralItensOs = 0, totalGeralServOs = 0, descontoos = 0, nos, tiposer = '', contserv = 0     
+let acrescimoos = 0, adiantamentoos =0, montodeb = 0, montocred = 0, subTotalOs=0, trocoos = 0, totalx = 0;   
 function cadordemos() {
   window.scrollTo(0, 0);
   vendasos = [];  
@@ -746,15 +744,12 @@ function calcularOperacaoOs() {
   }
   
   const totalPago = arredondar(dinheiro + debito + credito);
-  dinheirov = dinheiro;
- 
+  dinheirov = dinheiro; 
   const desabilitar = dinheiro >= total && debito === 0 && credito === 0;
   document.getElementById('cartaoDebito').disabled = desabilitar;
   document.getElementById('cartaoCredito').disabled = desabilitar;
-
   const faltaEl = document.getElementById('falta');
-  const trocoEl = document.getElementById('troco');
-  
+  const trocoEl = document.getElementById('troco');  
 
   if (totalPago < total) {
     const falta = arredondar(total - totalPago);
