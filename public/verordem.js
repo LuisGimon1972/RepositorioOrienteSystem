@@ -27,7 +27,7 @@ function resetOsStatev() {
   carregarFuncionariosTecMec();
   carregarStatus();
   tornarDescontoEAcrescimoSomenteLeitura(false);   
-  ['formPresenta', 'formCalculos'].forEach(id => document.getElementById(id).style.display = 'none');
+  ['formPresenta', 'formCalculos','ladiantamento','adiantamento'].forEach(id => document.getElementById(id).style.display = 'none');
   ['formPainel', 'formOs'].forEach(id => document.getElementById(id).style.display = 'block');
   document.getElementById('btnFinalizarOs').style.display = 'none';
   document.getElementById('btnFinalizarOsOs').style.display = 'none';
@@ -61,15 +61,18 @@ function preencherCamposOsv(os) {
   document.getElementById('laudo').value = os.laudo || '';
   const desconto = parseFloat(os.desconto);
   const acrescimo = parseFloat(os.acrescimo);
+  const adiantamento = parseFloat(os.adiantamento);
   document.getElementById('descoso').value = 
   isNaN(desconto) ? '0.00' : desconto.toFixed(2);
   document.getElementById('ascoso').value = 
   isNaN(acrescimo) ? '0.00' : acrescimo.toFixed(2);
+  document.getElementById('adiantamentox').value = 
+  isNaN(adiantamento) ? '0.00' : adiantamento.toFixed(2);
   document.getElementById('totalgeralos').value = (os.valorTotal ?? 0).toFixed(2);  
   descontosos = os.desconto
   acrescimosos = os.acrescimo  
   const select = document.getElementById('selectClienteos');
-  nomeclienos = select.options[select.selectedIndex].text;
+  nomeclienos = select.options[select.selectedIndex].text||'';
 
   const selectx = document.getElementById('selectFuncionarioos');
   funcionarioSelecionadoos = selectx.options[selectx.selectedIndex].text;
@@ -201,9 +204,10 @@ function atualizarTotaisOsv() {
   document.getElementById('totservos').value = totalServ.toFixed(2);  
   const desconto = parseFloat(document.getElementById('descoso')?.value) || 0;
   const acrescimo = parseFloat(document.getElementById('ascoso')?.value) || 0;  
+  const adiantamento = parseFloat(document.getElementById('adiantamentox')?.value) || 0;  
   descontosos = desconto
   acrescimosos = acrescimo    
-  let totalFinal = os_totalGeral - desconto + acrescimo;
+  let totalFinal = os_totalGeral - desconto + acrescimo - adiantamento;
   if (totalFinal < 0) totalFinal = 0;  
   document.getElementById('totalgeralos').value = totalFinal.toFixed(2);  
 }
