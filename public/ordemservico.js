@@ -1,3 +1,4 @@
+//Organizado
 let vendasos = [];    
 let totalGeralOs = 0, totalGeralItensOs = 0, totalGeralServOs = 0, descontoos = 0, nos, tiposer = '', contserv = 0     
 let acrescimoos = 0, adiantamentoos =0, montodeb = 0, montocred = 0, subTotalOs=0, trocoos = 0, totalx = 0;   
