@@ -71,14 +71,12 @@ function imprimirOrdemServico(os = {}) {
   const laudo = os.laudo || '';
   const descricao = os.descricao || '';
   const observacoes = os.observacoes || '';
-
   const desconto = os.desconto || 0;
   const acrescimo = os.acrescimo || 0;
   const adiantamento = os.adiantamento || 0;
   const totalItens = os.valorTotalItem || 0;
   const totalServ = os.valorTotalServ || 0;
   const totalGeral = os.valorTotal || (totalItens + totalServ - desconto + acrescimo - adiantamento);
-
   const itens = Array.isArray(os.itens) ? os.itens : [];
 
   const gerarCabecalho = () => `
