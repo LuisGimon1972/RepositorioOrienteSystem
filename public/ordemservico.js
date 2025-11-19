@@ -743,14 +743,23 @@ document.getElementById('acrescimoPorcentagem').parentElement.innerHTML = `
   document.getElementById('subtotal').innerText = subTotalOs.toFixed(2);           
   document.getElementById('desconto').value = descontoos.toFixed(2);;
   document.getElementById('acrescimo').value = acrescimoos.toFixed(2);; 
-  if(adiantamentoos>0) document.getElementById('dinheiro').value = adiantamentoos.toFixed(2); 
+  if (adiantamentoos > 0) {
+    const campo = document.getElementById('dinheiro');
+    campo.value = adiantamentoos.toFixed(2);    
+    const eventEnter = new KeyboardEvent('keydown', {
+        key: 'Enter',
+        code: 'Enter',
+        keyCode: 13,
+        which: 13,
+        bubbles: true
+    });
+    campo.dispatchEvent(eventEnter);
+}
   document.getElementById('dcto').innerText = descontoos.toFixed(2);
   document.getElementById('acres').innerText = acrescimoos.toFixed(2);     
   document.getElementById('total-geral').innerText = totalx;  
 }
 
-//asdsdaskdçalksdsadksakdlskaç 
-//dsfjk jkfjsdkfjsdfksjdkflç
 function calcularOperacaoOs() {  
   const dinheiroInput = parseFloat(document.getElementById('dinheiro').value) || 0;
   const debitoInput = parseFloat(document.getElementById('cartaoDebito').value) || 0;

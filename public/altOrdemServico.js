@@ -13,7 +13,7 @@ let swtos = false
 let acumiten = 0
 let descontosos = 0, acrescimosos = 0, cartados = 0, cartacos =0;   
 let trocovi = 0, adiantamentooso = 0
-let nosx = 0, swtoss = 0
+let nosx = 0
 let objetoSelecionado
 const os_form = document.getElementById('form-ordens');
 if (os_form) os_form.onsubmit = handleFormSubmitOs;
@@ -23,8 +23,7 @@ async function editordemos(osId) {
   resetOsState();
   bloquearCamposOS(false)
   nosx = osId;
-  swti = 6
-  swtoss = 2
+  swti = 6  
   try {
     const os = await fetchJson(`/ordemServico/os/${osId}`);    
     preencherCamposOs(os);
