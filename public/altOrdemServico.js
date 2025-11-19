@@ -1269,6 +1269,7 @@ function imprimirVendaOS(venda = {}) {
   const totalCred = cartacos || 0;  
   const dcto = descontosos || 0;
   const acres = acrescimosos || 0;
+  const adianta = adiantamentooso || 0;  
   const subt = totalCompra + dcto - acres || 0;  
   const usuarioVenda = venda.usuario || 'Usuário do Sistema';
   const clienteVenda = nomeclienos || 'Cliente não informado';
@@ -1314,6 +1315,7 @@ function imprimirVendaOS(venda = {}) {
       <div style="display: flex; justify-content: space-between;"><span>Sub Total:</span> <span>${formatarMoeda(subt)}</span></div>
       <div style="display: flex; justify-content: space-between;"><span>Desconto:</span> <span>${formatarMoeda(dcto)}</span></div>
       <div style="display: flex; justify-content: space-between;"><span>Acréscimo:</span> <span>${formatarMoeda(acres)}</span></div>
+      <div style="display: flex; justify-content: space-between;"><span>Adiantamento:</span> <span>${formatarMoeda(adianta)}</span></div>
       <div style="border-top: 1px dashed #000; margin: 4px 0;"></div>
       <div style="display: flex; justify-content: space-between; font-size: 12px;">
         <span>TOTAL GERAL:</span> <span>${formatarMoeda(totalCompra)}</span>
