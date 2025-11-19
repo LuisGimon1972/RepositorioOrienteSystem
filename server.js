@@ -294,17 +294,14 @@ db.run(`
   )
 `);
 
-
-
-// Utilitário de erro
 const handleDbError = (res, err) => {
   console.error('Erro no banco de dados:', err.message);
   res.status(500).json({ erro: 'Erro no banco de dados', detalhe: err.message });
 };
 
-// ================================
+
 // ROTA: Listar ordens de serviço completas
-// ================================
+
 app.get('/api/ordens-servico', (req, res) => {
   const sql = `
     SELECT 
