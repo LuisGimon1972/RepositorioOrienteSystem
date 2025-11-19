@@ -13,6 +13,8 @@ function cadvendapdv()
     RestauraLabel()
     tornarDescontoEAcrescimoSomenteLeitura(false)    
     document.getElementById('btnFinalizarOs').style.display = 'none';
+    document.getElementById('btnFinalizarOsOs').style.display = 'none';
+    document.getElementById('btnCancelaros').style.display = 'none';    
     swti = 0;
     document.getElementById('formPresenta').style.display = 'none';    
     document.getElementById('formPdv').style.display = 'block';   

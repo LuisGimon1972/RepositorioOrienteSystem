@@ -10,7 +10,9 @@ function compra()
     desabilitarControles(true)   
     RestauraLabel()
     tornarDescontoEAcrescimoSomenteLeitura(false)    
-    document.getElementById('btnFinalizarOs').style.display = 'none';
+    document.getElementById('btnFinalizarOs').style.display = 'none';    
+    document.getElementById('btnFinalizarOsOs').style.display = 'none';
+    document.getElementById('btnCancelaros').style.display = 'none';    
     swti = 0
     window.scrollTo(0, 0);
     document.getElementById('formPresenta').style.display = 'none';    
