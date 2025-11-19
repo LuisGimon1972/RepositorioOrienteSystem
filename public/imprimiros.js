@@ -43,6 +43,7 @@ if (os.funcionarioId) {
       descricao: os.descricao,
       observacoes: os.observacoes,
       desconto: os.desconto,
+      adiantamento: os.adiantamento,
       acrescimo: os.acrescimo,
       valorTotalItem: os.valorTotalItem,
       valorTotalServ: os.valorTotalServ,
@@ -73,9 +74,10 @@ function imprimirOrdemServico(os = {}) {
 
   const desconto = os.desconto || 0;
   const acrescimo = os.acrescimo || 0;
+  const adiantamento = os.adiantamento || 0;
   const totalItens = os.valorTotalItem || 0;
   const totalServ = os.valorTotalServ || 0;
-  const totalGeral = os.valorTotal || (totalItens + totalServ - desconto + acrescimo);
+  const totalGeral = os.valorTotal || (totalItens + totalServ - desconto + acrescimo - adiantamento);
 
   const itens = Array.isArray(os.itens) ? os.itens : [];
 
@@ -118,6 +120,7 @@ function imprimirOrdemServico(os = {}) {
       <div style="display: flex; justify-content: space-between;"><span>SERVIÇOS:</span> <span>${formatarMoeda(totalServ)}</span></div>
       <div style="display: flex; justify-content: space-between;"><span>DESCONTO:</span> <span>${formatarMoeda(desconto)}</span></div>
       <div style="display: flex; justify-content: space-between;"><span>ACRÉSCIMO:</span> <span>${formatarMoeda(acrescimo)}</span></div>
+      <div style="display: flex; justify-content: space-between;"><span>ADIANTAMENTO:</span> <span>${formatarMoeda(adiantamento)}</span></div>
       <div style="display: flex; justify-content: space-between; border-top:1px dashed #000; margin-top:4px;"><span>TOTAL GERAL:</span> <span>${formatarMoeda(totalGeral)}</span></div>
     </div>
   `;
