@@ -45,25 +45,7 @@ function resetOsState() {
   carregarFuncionariosTecMec();
   carregarStatus();
   tornarDescontoEAcrescimoSomenteLeitura(false); 
-  ['formPresenta', 'formCalculos'].forEach(id => document.getElementById(id).style.display = 'none');
-  ['formPainel', 'formOs'].forEach(id => document.getElementById(id).style.display = 'block');
-  document.getElementById('btnFinalizarOs').style.display = 'none';
-  document.getElementById('btnFinalizarOsOs').style.display = 'inline-block';
-  document.getElementById('btnFinalizarFi').style.display = 'none';
-  document.getElementById('btnFinalizarFc').style.display = 'none';
-  document.getElementById('btnFinalizar').style.display = 'none';
-  document.getElementById('btnFinalizarOs').style.display = 'none';  
-  document.getElementById('btnSalvarOrdem').style.display = 'none';
-  document.getElementById('btnCancelarOrdem').style.display = 'none';
-  document.getElementById('btnCancelarOrdemAlt').style.display = 'inline-block';
-  document.getElementById('btnCancelarVer').style.display = 'none';  
-  document.getElementById('btnCancelarOrdemAlt').disabled = false;
-  document.getElementById('btnAltOrdem').disabled = false;
-  document.getElementById('btnCancelaros').style.display = 'none';  
-  document.getElementById('btnAltOrdem').style.display = 'inline-block';
-  document.getElementById("controleod").readOnly = true;  
-  ['ladescos','descos','laascos','ascos','ladiantamento','adiantamento'].forEach(id => document.getElementById(id).style.display = 'none');
-  ['ladescoso','descoso','laascoso','ascoso','ladiantamentox','adiantamentox'].forEach(id => document.getElementById(id).style.display = 'inline-block');
+  habilitarcontrolesOsOs()  
 }
 
 async function fetchJson(url) {
@@ -1385,3 +1367,25 @@ function imprimirVendaOS(venda = {}) {
     }, 300);
   };
 }
+
+function habilitarcontrolesOsOs(){
+  ['formPresenta', 'formCalculos'].forEach(id => document.getElementById(id).style.display = 'none');
+  ['formPainel', 'formOs'].forEach(id => document.getElementById(id).style.display = 'block');
+  document.getElementById('btnFinalizarOs').style.display = 'none';
+  document.getElementById('btnFinalizarOsOs').style.display = 'inline-block';
+  document.getElementById('btnFinalizarFi').style.display = 'none';
+  document.getElementById('btnFinalizarFc').style.display = 'none';
+  document.getElementById('btnFinalizar').style.display = 'none';
+  document.getElementById('btnFinalizarOs').style.display = 'none';  
+  document.getElementById('btnSalvarOrdem').style.display = 'none';
+  document.getElementById('btnCancelarOrdem').style.display = 'none';
+  document.getElementById('btnCancelarOrdemAlt').style.display = 'inline-block';
+  document.getElementById('btnCancelarVer').style.display = 'none';  
+  document.getElementById('btnCancelarOrdemAlt').disabled = false;
+  document.getElementById('btnAltOrdem').disabled = false;
+  document.getElementById('btnCancelaros').style.display = 'none';  
+  document.getElementById('btnAltOrdem').style.display = 'inline-block';
+  document.getElementById("controleod").readOnly = true;  
+  ['ladescos','descos','laascos','ascos','ladiantamento','adiantamento'].forEach(id => document.getElementById(id).style.display = 'none');
+  ['ladescoso','descoso','laascoso','ascoso','ladiantamentox','adiantamentox'].forEach(id => document.getElementById(id).style.display = 'inline-block');
+  }

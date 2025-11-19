@@ -15,48 +15,9 @@ function cadordemos() {
   carregarFuncionariosTecMec();
   carregarStatus();
   tornarDescontoEAcrescimoSomenteLeitura(true)
-  bloquearCamposOS(false)
+  bloquearCamposOS(false)  
+  habilitarcontrolesOs()
   swti = 5
-  document.getElementById('formPresenta').style.display = 'none';        
-  document.getElementById('formPainel').style.display = 'block';   
-  document.getElementById('formCalculos').style.display = 'none';     
-  document.getElementById('formOs').style.display = 'block';         
-  document.getElementById("entraos").focus();   
-  document.getElementById("controleod").readOnly = true;      
-  document.getElementById("totitemos").readOnly = true;
-  document.getElementById("totservos").readOnly = true;
-  document.getElementById("totalgeralos").readOnly = true;
-  document.getElementById('btnFinalizarFi').style.display = 'none';
-  document.getElementById('btnFinalizarFc').style.display = 'none';
-  document.getElementById('btnFinalizar').style.display = 'none';
-  document.getElementById('btnFinalizarOs').style.display = 'inline-block';  
-  document.getElementById('btnFinalizarOsOs').style.display = 'none';    
-  document.getElementById('btnSalvarOrdem').style.display = 'inline-block';
-  document.getElementById('btnAltOrdem').style.display = 'none';
-  document.getElementById('btnCancelarOrdem').disabled = false;
-  document.getElementById('btnSalvarOrdem').disabled = false; 
-  document.getElementById('btnCancelarOrdem').style.display = 'inline-block';
-  document.getElementById('btnCancelarOrdemAlt').style.display = 'none';
-  document.getElementById('btnCancelarVer').style.display = 'none';  
-  document.getElementById('btnCancelar').style.display = 'none';  
-  document.getElementById('btnCancelarv').style.display = 'none';  
-  document.getElementById('btnCancelaros').style.display = 'inline-block';    
-  document.getElementById('ladescos').style.display = 'inline-block';
-  document.getElementById('laascos').style.display = 'inline-block';
-  document.getElementById('descos').style.display = 'inline-block';
-  document.getElementById('ascos').style.display = 'inline-block';
-  document.getElementById('ladiantamento').style.display = 'inline-block';
-  document.getElementById('adiantamento').style.display = 'inline-block';
-  document.getElementById('ladescoso').style.display = 'none';
-  document.getElementById('descoso').style.display = 'none';
-  document.getElementById('laascoso').style.display = 'none';
-  document.getElementById('ascoso').style.display = 'none';
-  document.getElementById('ladiantamentox').style.display = 'none';
-  document.getElementById('adiantamentox').style.display = 'none';
-
-
-
-
   fetch('/ordemServico/max')
   .then(res => res.json())
   .then(data => {    
@@ -279,7 +240,7 @@ function cadordemos() {
       tbody.appendChild(tr);
       subtotalOs += item.total;
       totalGeralOs = subtotalOs
-      document.getElementById('totalgeralos').value = totalGeralOs;
+      document.getElementById('totalgeralos').value = totalGeralOs.toFixed(2);
     });
   }
 }   
@@ -1185,3 +1146,43 @@ function imprimirVendaOSCad(venda = {}) {
     }, 300);
   };
 }
+
+function habilitarcontrolesOs()
+  {
+  document.getElementById('formPresenta').style.display = 'none';        
+  document.getElementById('formPainel').style.display = 'block';   
+  document.getElementById('formCalculos').style.display = 'none';     
+  document.getElementById('formOs').style.display = 'block';         
+  document.getElementById("entraos").focus();   
+  document.getElementById("controleod").readOnly = true;      
+  document.getElementById("totitemos").readOnly = true;
+  document.getElementById("totservos").readOnly = true;
+  document.getElementById("totalgeralos").readOnly = true;
+  document.getElementById('btnFinalizarFi').style.display = 'none';
+  document.getElementById('btnFinalizarFc').style.display = 'none';
+  document.getElementById('btnFinalizar').style.display = 'none';
+  document.getElementById('btnFinalizarOs').style.display = 'inline-block';  
+  document.getElementById('btnFinalizarOsOs').style.display = 'none';    
+  document.getElementById('btnSalvarOrdem').style.display = 'inline-block';
+  document.getElementById('btnAltOrdem').style.display = 'none';
+  document.getElementById('btnCancelarOrdem').disabled = false;
+  document.getElementById('btnSalvarOrdem').disabled = false; 
+  document.getElementById('btnCancelarOrdem').style.display = 'inline-block';
+  document.getElementById('btnCancelarOrdemAlt').style.display = 'none';
+  document.getElementById('btnCancelarVer').style.display = 'none';  
+  document.getElementById('btnCancelar').style.display = 'none';  
+  document.getElementById('btnCancelarv').style.display = 'none';  
+  document.getElementById('btnCancelaros').style.display = 'inline-block';    
+  document.getElementById('ladescos').style.display = 'inline-block';
+  document.getElementById('laascos').style.display = 'inline-block';
+  document.getElementById('descos').style.display = 'inline-block';
+  document.getElementById('ascos').style.display = 'inline-block';
+  document.getElementById('ladiantamento').style.display = 'inline-block';
+  document.getElementById('adiantamento').style.display = 'inline-block';
+  document.getElementById('ladescoso').style.display = 'none';
+  document.getElementById('descoso').style.display = 'none';
+  document.getElementById('laascoso').style.display = 'none';
+  document.getElementById('ascoso').style.display = 'none';
+  document.getElementById('ladiantamentox').style.display = 'none';
+  document.getElementById('adiantamentox').style.display = 'none';
+  }
