@@ -13,7 +13,7 @@ let swtos = false
 let acumiten = 0
 let descontosos = 0, acrescimosos = 0, cartados = 0, cartacos =0;   
 let trocovi = 0, adiantamentooso = 0
-let nosx = 0
+let nosx = 0 
 let objetoSelecionado
 const os_form = document.getElementById('form-ordens');
 if (os_form) os_form.onsubmit = handleFormSubmitOs;
@@ -383,7 +383,7 @@ function atualizarTotaisOs() {
   adiantamentooso = adiantamento
   let totalFinal = os_totalGeral - desconto - adiantamento + acrescimo;
   if (totalFinal < 0) totalFinal = 0;  
-  document.getElementById('totalgeralos').value = totalFinal.toFixed(2);  
+  document.getElementById('totalgeralos').value = totalFinal.toFixed(2);   
 }
 
 function alterarOrdem()
@@ -526,7 +526,8 @@ function coletarDadosOrdem() {
   const observacoes = document.getElementById("observa").value.trim();
   const desconto = parseFloat(document.getElementById('descoso').value)||0;
   const acrescimo = parseFloat(document.getElementById('ascoso').value)||0;  
-  const adiantamento = parseFloat(document.getElementById('adiantamento').value)||0;  
+  const adiantamento = parseFloat(document.getElementById('adiantamentox').value)||0;  
+  const total = parseFloat(document.getElementById('totalgeralos')?.value) || 0; 
   return {
     numeroOS: idOS,
     clienteId,
@@ -542,7 +543,7 @@ function coletarDadosOrdem() {
     acrescimo,
     valorTotalItem: os_totalItens,
     valorTotalServ: os_totalServ,
-    valorTotal: os_totalGeral - desconto + acrescimo,
+    valorTotal: total,
     adiantamento
   };
 }
@@ -598,7 +599,7 @@ function recalcularTotalOsOs() {
   const descontoInput = document.getElementById('descoso');
   const acrescimoInput = document.getElementById('ascoso');
   const adiantamentoInput = document.getElementById('adiantamentox');
-  const totalGeralInput = document.getElementById('totalgeralos');  
+  const totalGeralInput = document.getElementById('totalgeralos');    
   let desconto = parseFloat(descontoInput.value) || 0;
   let acrescimo = parseFloat(acrescimoInput.value) || 0;
   let adiantamentos = parseFloat(adiantamentoInput.value) || 0;
